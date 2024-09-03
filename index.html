@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khadim POS - Proposal</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+   <style>
+/* Green Color Palettes */
+.primary-green { 
+    background-color: #42b883; /* Main green color */
+}
+.secondary-green { 
+    background-color: #347474; /* Darker green */
+}
+.accent-green { 
+    background-color: #2a9d8f; /* Slightly different green for accents */
+}
+.neutral-green { 
+    background-color: #9de0b4; /* Light green for neutral backgrounds */
+}
+
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f1; /* Light neutral green background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #347474; /* Dark green for navbar */
+    padding: 15px 20px;
+}
+
+.navbar .navbar-brand {
+    color: #42b883; /* Main green color for brand */
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    margin-right: 10px;
+    transition: color 0.3s ease-in-out;
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-item.active .nav-link {
+    color: #9de0b4; /* Light green for hover/active state */
+    font-weight: bold;
+    border-bottom: 2px solid #9de0b4; /* Active link underline */
+    transition: all 0.3s;
+}
+
+/* Hero Section Styles */
+.hero {
+    background-color: #42b883; /* Main green color for hero background */
+    padding: 100px 0;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+}
+
+.hero .btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    background-color: #9de0b4; /* Light green for hero button */
+    border: none;
+    color: #333;
+    transition: background-color 0.3s;
+}
+
+.hero .btn:hover {
+    background-color: #8ccf9e; /* Slightly muted light green for button hover */
+}
+
+/* Section Title Styles */
+section h2 {
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #42b883; /* Main green color for section titles */
+    text-align: center;
+}
+
+/* Feature Box Styles */
+.feature-box {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.feature-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.feature-box i {
+    color: #42b883; /* Main green color for icons */
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+/* Contact Section */
+#contact {
+    background-color: #2a9d8f; /* Slightly different green for contact section */
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+}
+
+#contact .form-control, 
+#contact .btn {
+    border-radius: 30px;
+    margin: 10px 0;
+}
+
+#contact .btn {
+    background-color: #9de0b4; /* Light green for contact button */
+    border: none;
+    padding: 10px 30px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+#contact .btn:hover {
+    background-color: #8ccf9e; /* Slightly muted light green for button hover */
+}
+
+/* Footer */
+footer {
+    background-color: #347474; /* Dark green for footer */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer a {
+    color: #fff;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #9de0b4; /* Light green for link hover */
+    text-decoration: none;
+}
+
+/* Image Gallery Styles */
+#imageGallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px; /* Space between images */
+    padding: 20px 10px;
+}
+
+#imageGallery img {
+    width: calc(33% - 10px);
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+#imageGallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Lightbox Styles */
+#lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+#lightbox-content {
+    position: relative;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#lightbox-content img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #9de0b4; /* Light green for close button hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    #imageGallery img {
+        width: calc(50% - 10px); /* Adjust image width on medium screens */
+    }
+}
+
+@media (max-width: 576px) {
+    #imageGallery img {
+        width: 100%; /* Full width on mobile */
+        height: auto;
+    }
+
+    #lightbox-content {
+        width: 95%;
+    }
+
+    .navbar-nav .nav-link {
+        margin-right: 5px;
+    }
+}
+
+/* Pricing Section Styles */
+.pricing-section {
+    background-color: #f0f4f1; /* Light background for contrast */
+    padding: 60px 0;
+    text-align: center;
+}
+
+.pricing-section h2 {
+    color: #42b883; /* Main green color for the section title */
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.pricing-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Pricing Card Styles */
+.pricing-card {
+    background-color: #fff;
+    border: 2px solid #42b883; /* Main green color for card border */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.pricing-card h3 {
+    background-color: #42b883; /* Main green color for header background */
+    padding: 10px 0;
+    margin: 0 -20px 20px;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.price {
+    font-size: 2rem;
+    color: #42b883; /* Main green for the price */
+    margin-bottom: 20px;
+}
+
+.price span {
+    font-size: 1rem;
+    color: #777;
+}
+
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    color: #333;
+}
+
+.pricing-card ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.pricing-card ul li:last-child {
+    border-bottom: none;
+}
+
+.pricing-card .btn {
+    background-color: #42b883; /* Main green color for button */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.pricing-card .btn:hover {
+    background-color: #347474; /* Darker green for button hover */
+}
+
+/* Video Section Styles */
+.video-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa; /* Adjust background color as needed */
+    text-align: center;
+}
+
+.video-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #232323; /* Adjust heading color */
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 800px; /* Adjust max width as needed */
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 450px; /* Adjust the height */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+   </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-cash-register mr-2"></i>Khadim POS
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#description">Description</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                 
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero text-center">
+        <div class="container">
+            <h1>Khadim POS</h1>
+            <p>Transform your business operations with our advanced Point of Sale system tailored for mobile shops, restaurants, and retail environments.</p>
+            <a href="#contact" class="btn btn-light btn-lg rounded-pill">Request a Demo</a>
+        </div>
+    </header>
+    <section class="video-section">
+        <h2>Watch Our Latest Video</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/C-tRU3zzRjY" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+    
+    <h2 class="text-center">Images</h2>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav" id="navLinks">
+                    <!-- Dynamic nav links will be rendered here -->
+                </ul>
+               
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-4">
+        <div id="imageGallery" class="d-flex flex-wrap">
+            <!-- Images will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <div id="lightbox">
+        <div id="lightbox-content">
+            <span class="close">&times;</span>
+            <img id="lightbox-img" src="" alt="Lightbox Image">
+        </div>
+    </div>
+
+
+    <section id="description" class="py-5">
+        <div class="container">
+            <h2 class="text-center">Description</h2>
+            <p class="lead text-center">Khadim POS is a powerful and user-friendly Point of Sale system designed to streamline and enhance your business operations. Ideal for various environments including mobile shops and restaurants, Khadim POS offers comprehensive tools for managing inventory, sales, and financial transactions. Enjoy features like barcode printing, multi-currency support, and robust reporting capabilities, all within a customizable and intuitive interface.</p>
+        </div>
+    </section>
+
+    <section id="features" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center">Features</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-box-open fa-3x mb-3"></i>
+                        <h4>Product Management</h4>
+                        <p>Manage your inventory with ease, including multiple images for each product.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-barcode fa-3x mb-3"></i>
+                        <h4>Barcode Printing</h4>
+                        <p>Generate and print barcodes to streamline sales and inventory management.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-cogs fa-3x mb-3"></i>
+                        <h4>Stock Management</h4>
+                        <p>Track and manage stock levels efficiently with real-time updates and alerts.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-file-alt fa-3x mb-3"></i>
+                        <h4>Quotation Management</h4>
+                        <p>Create and send professional quotations directly from the system.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-shopping-cart fa-3x mb-3"></i>
+                        <h4>Purchase and Sales Management</h4>
+                        <p>Efficiently handle purchases, sales, and returns with our integrated solution.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-wallet fa-3x mb-3"></i>
+                        <h4>Expense Management</h4>
+                        <p>Track and manage business expenses to keep your budget in check.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-users fa-3x mb-3"></i>
+                        <h4>Customer & Supplier Management</h4>
+                        <p>Maintain detailed records and manage interactions with customers and suppliers.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-user-shield fa-3x mb-3"></i>
+                        <h4>User Management</h4>
+                        <p>Define roles and permissions to control user access and functionality.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-globe fa-3x mb-3"></i>
+                        <h4>Multi-Currency Support</h4>
+                        <p>Handle transactions in various currencies to cater to an international audience.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-ruler fa-3x mb-3"></i>
+                        <h4>Unit Management</h4>
+                        <p>Manage different units of measurement for products, enhancing inventory accuracy.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-database fa-3x mb-3"></i>
+                        <h4>Backup & Restore</h4>
+                        <p>Ensure data safety with easy backup and restore options for peace of mind.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-box">
+                        <i class="fas fa-chart-line fa-3x mb-3"></i>
+                        <h4>Detailed Reports</h4>
+                        <p>Generate insightful reports to make data-driven business decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <h2>Our Pricing Plans</h2>
+        <div class="pricing-cards">
+            <div class="pricing-card">
+                <h3>Basic</h3>
+                <p class="price">$700 <span>/month</span></p>
+                <ul>
+                    <li>1 Year POS Software Hosting</li>
+                    <li>Basic POS Features</li>
+                    <li>2 Months Support</li>
+                </ul>
+                <button href="#contact" class="btn">Get Started</button>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Premium</h3>
+                <p class="price">$900<span>/month</span></p>
+                <ul>
+                    <li>1 Year POS Software Hosting</li>
+                    <li>Advanced POS Features</li>
+                    <li>Integration with Your Online Store</li>
+                    <li>2 Months Support</li>
+                    <li>2 Months Business Marketing</li>
+                </ul>
+                <button href="#contact" class="btn">Get Started</button>
+            </div>
+            <div class="pricing-card">
+                <h3>Pro</h3>
+                <p class="price">$1200 <span>/month</span></p>
+                <ul>
+                    <li>1 Year POS Software Hosting</li>
+                    <li>All Advanced POS Features</li>
+                    <li>Custom Integrations</li>
+                    <li>Extended Support</li>
+                    <li>4 Months Business Marketing</li>
+                </ul>
+                <button href="#contact" class="btn">Get Started</button>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <section id="contact" class="py-5">
+        <div class="container">
+          <h2 class="text-center text-white">Contact Us</h2>
+          <p class="lead text-center text-white">We would love to hear from you! Fill out the form below to get in touch.</p>
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <form id="contactForm">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <textarea id="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block rounded-pill">Send Message</button>
+              </form>
+              <p id="responseMessage" class="text-center"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2024 Khadim POS. All rights reserved.</p>
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const categories = {
+                'General': ['add_catagory.png', 'catagories.png', 'bg.png'],
+                'User Management': ['CreateUser.png', 'AllUsers.png', 'addrole.png'],
+                'Product Management': ['createproduct.png', 'alllproduct.png', 'CreatePurchase.png', 'AllPurchases.png', 'purchaseReturn.png', 'AllpurchaseReturns.png'],
+                'Sales Management': ['createSaleReturn.png', 'Allsales.png', 'AllsalesReturn.png', 'sale.png'],
+                'Expenses and Reports': ['CreateExpense.png', 'AllExpenses.png', 'ProfitAndLossReports.png', 'PaymentReport.png'],
+                'Suppliers': ['AllSuplaiers.png', 'bardcode.png', 'printbarcode.png'],
+                'Settings': ['CurrencySetting.png', 'sysTemSettting.png', 'unitsetting.png', 'stockAdgusment.png', 'alllAdjustment.png', 'RoleAndPermissiom.png', 'AllQoutation.png']
+            };
+
+            function renderNavLinks() {
+                let navLinksHtml = '<li class="nav-item active"><a class="nav-link" href="#" data-category="All">All</a></li>';
+                $.each(categories, function(category) {
+                    navLinksHtml += `<li class="nav-item"><a class="nav-link" href="#" data-category="${category}">${category}</a></li>`;
+                });
+                $('#navLinks').html(navLinksHtml);
+            }
+
+            function loadImages(category) {
+                let images = category === 'All' ? Object.values(categories).flat() : categories[category] || [];
+                let imageHtml = images.map(img => `<img src="images/${img}" alt="${img}" data-src="images/${img}" class="img-thumbnail">`).join('');
+                $('#imageGallery').html(imageHtml);
+            }
+
+            function openLightbox(src) {
+                $('#lightbox').show();
+                $('#lightbox-img').attr('src', src);
+            }
+
+            function closeLightbox() {
+                $('#lightbox').hide();
+            }
+
+            $('#navLinks').on('click', '.nav-link', function(e) {
+                e.preventDefault();
+                const category = $(this).data('category');
+                $('.navbar-nav .nav-item').removeClass('active');
+                $(this).parent().addClass('active');
+                loadImages(category);
+            });
+
+            $('#imageGallery').on('click', 'img', function() {
+                openLightbox($(this).data('src'));
+            });
+
+            $('.close').on('click', closeLightbox);
+
+            renderNavLinks();
+            loadImages('General'); // Default category
+        });
+    </script>
+    <script>
+        // Initialize EmailJS with your user ID
+        emailjs.init("_N39cJ6Q8zBuTzHZM"); // Replace with your EmailJS user ID
+      
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+          event.preventDefault(); // Prevent default form submission
+      
+          // Get form values
+          var name = document.getElementById("name").value;
+          var email = document.getElementById("email").value;
+          var message = document.getElementById("message").value;
+      
+          // Create template parameters
+          var templateParams = {
+            to_name: "Mubashir hussain", // Replace with the recipient's name or use another input field
+            from_name: name,
+            from_email: email,
+            message: message,
+          };
+      
+          // Send email using EmailJS
+          emailjs.send("service_kufmjik", "template_oa4rkej", templateParams)
+            .then(function(response) {
+              // Success callback
+              document.getElementById("responseMessage").innerText = "Your message has been sent!";
+              document.getElementById("contactForm").reset(); // Reset the form
+            }, function(error) {
+              // Error callback
+              document.getElementById("responseMessage").innerText = "An error occurred. Please try again.";
+            });
+        });
+      </script>
+      
+</body>
+</html>
+
