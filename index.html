@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Khadim POS </title>
+    <title>Khadim POS</title>
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
@@ -55,7 +55,7 @@
         text-transform: uppercase;
       }
       .navbar-dark .navbar-nav .nav-link {
-        color:black;
+        color: black;
       }
 
       .navbar-nav .nav-link {
@@ -108,6 +108,13 @@
 
       /* Section Title Styles */
       section h2 {
+        margin-bottom: 30px;
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #42b883; /* Main green color for section titles */
+        text-align: center;
+      }
+      h2 {
         margin-bottom: 30px;
         font-size: 2.5rem;
         font-weight: bold;
@@ -205,39 +212,72 @@
         transform: scale(1.05);
         box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
       }
-   /* Lightbox Container */
-#lightbox {
-  display: none; /* Hidden by default */
-  position: fixed; /* Fixed position for full-screen overlay */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-  justify-content: center; /* Center items horizontally */
-  align-items: center; /* Center items vertically */
-  z-index: 1000; /* Ensure the lightbox is above other content */
-}
+      /* Lightbox Container */
+      #lightbox {
+        display: none; /* Hidden by default */
+        position: fixed; /* Fixed position for full-screen overlay */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+        justify-content: center; /* Center items horizontally */
+        align-items: center; /* Center items vertically */
+        z-index: 1000; /* Ensure the lightbox is above other content */
+      }
 
-/* Lightbox Image */
-#lightbox-img {
-  max-width: 90%; /* Maximum width of the image */
-  max-height: 80%; /* Maximum height of the image */
-  display: block; /* Ensure image is displayed as block */
-  margin: auto; /* Center the image within the lightbox */
-}
+      /* Lightbox Image */
+      #lightbox-img {
+        max-width: 90%; /* Maximum width of the image */
+        max-height: 80%; /* Maximum height of the image */
+        display: block; /* Ensure image is displayed as block */
+        margin: auto; /* Center the image within the lightbox */
+      }
 
-/* Close Button */
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: white;
-  font-size: 2em;
-  cursor: pointer;
-  z-index: 1001; /* Ensure the close button is above the lightbox content */
-}
-
+      /* Close Button */
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: white;
+        font-size: 2em;
+        cursor: pointer;
+        z-index: 1001; /* Ensure the close button is above the lightbox content */
+      }
+      .erdiagram {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .chart-container {
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 1000px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #myDiagramDiv {
+        width: 100%;
+        height: 500px;
+        border: solid 1px black;
+      }
+      .node.selected {
+        background-color: #00ffd0;
+      }
+      .node {
+        cursor: pointer;
+      }
       .btn-active {
         background-color: #9de0b4;
         color: white;
@@ -434,74 +474,72 @@
     </style>
   </head>
   <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <i class="fa fa-credit-card mr-2 green-icon"></i>Khadim POS
-    </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto text-center">
-        <li class="nav-item">
-          <a class="nav-link" href="#description">Description</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#features">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#pricing">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact Us</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="fa fa-credit-card mr-2 green-icon"></i>Khadim POS
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto text-center">
+            <li class="nav-item">
+              <a class="nav-link" href="#description">Description</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#features">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#pricing">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
+    <style>
+      /* Apply the green color to the hammer icon */
+      .green-icon {
+        color: green; /* You can adjust the shade of green if needed */
+      }
 
-<style>
-/* Apply the green color to the hammer icon */
-.green-icon {
-  color: green; /* You can adjust the shade of green if needed */
-}
+      .navbar-light {
+        background-color: #f8f9fa; /* Light background color */
+      }
 
-.navbar-light {
-  background-color: #f8f9fa; /* Light background color */
-}
+      .navbar-light .navbar-brand,
+      .navbar-light .navbar-nav .nav-link {
+        color: #07250c; /* Darker color for contrast */
+      }
 
-.navbar-light .navbar-brand,
-.navbar-light .navbar-nav .nav-link {
-  color: #07250c; /* Darker color for contrast */
-}
+      .navbar-light .navbar-nav .nav-link {
+        padding: 0.5rem 1rem; /* Adjust padding for better spacing */
+      }
 
-.navbar-light .navbar-nav .nav-link {
-  padding: 0.5rem 1rem; /* Adjust padding for better spacing */
-}
+      .navbar-light .navbar-nav .nav-link:hover {
+        color: #42b883; /* Color change on hover */
+      }
 
-.navbar-light .navbar-nav .nav-link:hover {
-  color: #42b883; /* Color change on hover */
-}
+      .navbar-light .navbar-toggler {
+        border-color: #42b883; /* Toggler border color */
+      }
 
-.navbar-light .navbar-toggler {
-  border-color: #42b883; /* Toggler border color */
-}
-
-.navbar-light .navbar-toggler-icon {
-  background-image: url('images/icon.svg'); /* Custom toggler icon if needed */
-}
-</style>
-
+      .navbar-light .navbar-toggler-icon {
+        background-image: url("images/icon.svg"); /* Custom toggler icon if needed */
+      }
+    </style>
 
     <section
       class="animated-background"
@@ -698,25 +736,180 @@
       </script>
     </section>
     <section id="description" class="py-5">
-        <div class="container">
-            <h2 class="mb-4">Description</h2>
-             <br>
-            <div class="row align-items-center">
-                <!-- Left Side: Text Content -->
-                <div class="col-md-6">
-                    <p class="lead">
-                        Khadim POS is a versatile and innovative Point of Sale system crafted to meet the needs of modern businesses, from small shops to bustling restaurants. This advanced software solution is designed to streamline your operations, boost efficiency, and provide a seamless experience for both staff and customers. With Khadim POS, managing your business has never been easier, thanks to its intuitive interface and a comprehensive suite of features that cover every aspect of sales and inventory management.
-                    </p>
-                 
-                </div>
-                <!-- Right Side: Image -->
-                <div class="col-md-6">
-                    <img src="images/home.jpeg" alt="Khadim POS System" class="img-fluid rounded">
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="mb-4">Description</h2>
+        <br />
+        <div class="row align-items-center">
+          <!-- Left Side: Text Content -->
+          <div class="col-md-6">
+            <p class="lead">
+              Khadim POS is a versatile and innovative Point of Sale system
+              crafted to meet the needs of modern businesses, from small shops
+              to bustling restaurants. This advanced software solution is
+              designed to streamline your operations, boost efficiency, and
+              provide a seamless experience for both staff and customers. With
+              Khadim POS, managing your business has never been easier, thanks
+              to its intuitive interface and a comprehensive suite of features
+              that cover every aspect of sales and inventory management.
+            </p>
+          </div>
+          <!-- Right Side: Image -->
+          <div class="col-md-6">
+            <img
+              src="images/home.jpeg"
+              alt="Khadim POS System"
+              class="img-fluid rounded"
+            />
+          </div>
         </div>
+      </div>
     </section>
-    
+    <h2 class="text-center">Khadim POS Interactive Flowchart</h2>
+
+    <section class="erdiagram">
+      <div class="chart-container">
+          <div id="myDiagramDiv"></div>
+      </div>
+  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/2.2.8/go.js"></script>
+      <script>
+          function init() {
+              const $ = go.GraphObject.make;
+  
+              const myDiagram = $(go.Diagram, "myDiagramDiv", {
+                  initialContentAlignment: go.Spot.Center,
+                  "undoManager.isEnabled": true,
+                  layout: $(go.TreeLayout, { angle: 90, layerSpacing: 35 })
+              });
+  
+              myDiagram.nodeTemplate = $(
+                  go.Node, "Auto",
+                  { click: function(e, obj) { handleClick(e, obj); } },
+                  $(go.Shape, "Rectangle", { strokeWidth: 1, fill: "lightblue" },
+                      new go.Binding("fill", "color")),
+                  $(go.TextBlock, { margin: 5 },
+                      new go.Binding("text", "name"))
+              );
+  
+              myDiagram.linkTemplate = $(
+                  go.Link,
+                  $(go.Shape),
+                  $(go.Shape, { toArrow: "OpenTriangle" })
+              );
+  
+              const model = $(go.GraphLinksModel, {
+                  linkKeyProperty: "key",
+                  nodeDataArray: [
+                      { key: "A", name: "Home", color: "lightblue" },
+                      { key: "B", name: "Products", color: "lightblue" },
+                      { key: "C", name: "Categories", color: "lightblue" },
+                      { key: "D", name: "Create Product", color: "lightblue" },
+                      { key: "E", name: "All Products", color: "lightblue" },
+                      { key: "F", name: "Print Barcode", color: "lightblue" },
+                      { key: "G", name: "Stock Adjustments", color: "lightblue" },
+                      { key: "H", name: "Create Adjustment", color: "lightblue" },
+                      { key: "I", name: "All Adjustments", color: "lightblue" },
+                      { key: "J", name: "Quotations", color: "lightblue" },
+                      { key: "K", name: "Create Quotation", color: "lightblue" },
+                      { key: "L", name: "All Quotations", color: "lightblue" },
+                      { key: "M", name: "Purchases", color: "lightblue" },
+                      { key: "N", name: "Create Purchase", color: "lightblue" },
+                      { key: "O", name: "All Purchases", color: "lightblue" },
+                      { key: "P", name: "Purchase Returns", color: "lightblue" },
+                      { key: "Q", name: "Create Purchase Return", color: "lightblue" },
+                      { key: "R", name: "All Purchase Returns", color: "lightblue" },
+                      { key: "S", name: "Sales", color: "lightblue" },
+                      { key: "T", name: "Create Sale", color: "lightblue" },
+                      { key: "U", name: "All Sales", color: "lightblue" },
+                      { key: "V", name: "Sale Returns", color: "lightblue" },
+                      { key: "W", name: "Create Sale Return", color: "lightblue" },
+                      { key: "X", name: "All Sale Returns", color: "lightblue" },
+                      { key: "Y", name: "Expenses", color: "lightblue" },
+                      { key: "Z", name: "Expense Categories", color: "lightblue" },
+                      { key: "AA", name: "Create Expense", color: "lightblue" },
+                      { key: "AB", name: "All Expenses", color: "lightblue" },
+                      { key: "AC", name: "Parties", color: "lightblue" },
+                      { key: "AD", name: "Customers", color: "lightblue" },
+                      { key: "AE", name: "Suppliers", color: "lightblue" },
+                      { key: "AF", name: "Reports", color: "lightblue" },
+                      { key: "AG", name: "Profit / Loss Report", color: "lightblue" },
+                      { key: "AH", name: "Payments Report", color: "lightblue" },
+                      { key: "AI", name: "Sales Report", color: "lightblue" },
+                      { key: "AJ", name: "Purchases Report", color: "lightblue" },
+                      { key: "AK", name: "Sales Return Report", color: "lightblue" },
+                      { key: "AL", name: "Purchases Return Report", color: "lightblue" },
+                      { key: "AM", name: "User Management", color: "lightblue" },
+                      { key: "AN", name: "Create User", color: "lightblue" },
+                      { key: "AO", name: "All Users", color: "lightblue" },
+                      { key: "AP", name: "Roles & Permissions", color: "lightblue" },
+                      { key: "AQ", name: "Settings", color: "lightblue" },
+                      { key: "AR", name: "Units", color: "lightblue" },
+                      { key: "AS", name: "Currencies", color: "lightblue" },
+                      { key: "AT", name: "System Settings", color: "lightblue" }
+                  ],
+                  linkDataArray: [
+                      { key: "A-B", from: "A", to: "B" },
+                      { key: "B-C", from: "B", to: "C" },
+                      { key: "B-D", from: "B", to: "D" },
+                      { key: "B-E", from: "B", to: "E" },
+                      { key: "B-F", from: "B", to: "F" },
+                      { key: "C-D", from: "C", to: "D" },
+                      { key: "C-E", from: "C", to: "E" },
+                      { key: "D-F", from: "D", to: "F" },
+                      { key: "B-G", from: "B", to: "G" },
+                      { key: "G-H", from: "G", to: "H" },
+                      { key: "G-I", from: "G", to: "I" },
+                      { key: "B-J", from: "B", to: "J" },
+                      { key: "J-K", from: "J", to: "K" },
+                      { key: "J-L", from: "J", to: "L" },
+                      { key: "B-M", from: "B", to: "M" },
+                      { key: "M-N", from: "M", to: "N" },
+                      { key: "M-O", from: "M", to: "O" },
+                      { key: "B-P", from: "B", to: "P" },
+                      { key: "P-Q", from: "P", to: "Q" },
+                      { key: "P-R", from: "P", to: "R" },
+                      { key: "B-S", from: "B", to: "S" },
+                      { key: "S-T", from: "S", to: "T" },
+                      { key: "S-U", from: "S", to: "U" },
+                      { key: "B-V", from: "B", to: "V" },
+                      { key: "V-W", from: "V", to: "W" },
+                      { key: "V-X", from: "V", to: "X" },
+                      { key: "B-Y", from: "B", to: "Y" },
+                      { key: "Y-Z", from: "Y", to: "Z" },
+                      { key: "Y-AA", from: "Y", to: "AA" },
+                      { key: "Y-AB", from: "Y", to: "AB" },
+                      { key: "B-AC", from: "B", to: "AC" },
+                      { key: "AC-AD", from: "AC", to: "AD" },
+                      { key: "AC-AE", from: "AC", to: "AE" },
+                      { key: "B-AF", from: "B", to: "AF" },
+                      { key: "AF-AG", from: "AF", to: "AG" },
+                      { key: "AF-AH", from: "AF", to: "AH" },
+                      { key: "AF-AI", from: "AF", to: "AI" },
+                      { key: "AF-AJ", from: "AF", to: "AJ" },
+                      { key: "AF-AK", from: "AF", to: "AK" },
+                      { key: "AF-AL", from: "AF", to: "AL" },
+                      { key: "B-AM", from: "B", to: "AM" },
+                      { key: "AM-AN", from: "AM", to: "AN" },
+                      { key: "AM-AO", from: "AM", to: "AO" },
+                      { key: "AM-AP", from: "AM", to: "AP" },
+                      { key: "B-AQ", from: "B", to: "AQ" },
+                      { key: "AQ-AR", from: "AQ", to: "AR" },
+                      { key: "AQ-AS", from: "AQ", to: "AS" },
+                      { key: "AQ-AT", from: "AQ", to: "AT" }
+                  ]
+              });
+  
+              myDiagram.model = model;
+          }
+  
+          // function handleClick(e, obj) {
+          //     alert("You clicked on: " + obj.data.name);
+          // }
+  
+          window.addEventListener("DOMContentLoaded", init);
+      </script>
+  
+    </section>
     <section class="video-section">
       <h2>Watch Our Latest Video</h2>
       <div class="video-container">
@@ -742,27 +935,25 @@
       <span class="close" onclick="closeLightbox()">&times;</span>
       <img id="lightbox-img" src="" alt="Lightbox Image" />
     </div>
-   
 
-<!-- Additional Styles for Layout -->
-<style>
-
-    #description p {
+    <!-- Additional Styles for Layout -->
+    <style>
+      #description p {
         color: #555;
-    }
-    #description ul {
+      }
+      #description ul {
         color: #555;
         padding-left: 0;
         list-style: none;
-    }
-    #description ul li {
+      }
+      #description ul li {
         margin-bottom: 10px;
-    }
-    #description img {
+      }
+      #description img {
         max-width: 100%;
         height: auto;
-    }
-</style>
+      }
+    </style>
 
     <section id="features" class="bg-light py-5">
       <div class="container">
@@ -1059,97 +1250,173 @@
       </div>
     </section>
     <section id="faq" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Frequently Asked Questions</h2>
-            <div class="accordion" id="faqAccordion">
-                <!-- FAQ Item 1 -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqHeading1">
-                        <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
-                            What is Khadim POS?
-                        </button>
-                    </h2>
-                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Khadim POS is a robust Point of Sale system designed for businesses like retail stores, restaurants, and mobile shops. It offers tools for inventory management, sales tracking, and customer relationship management, all within an easy-to-use interface.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 2 -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqHeading2">
-                        <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
-                            How does Khadim POS help manage inventory?
-                        </button>
-                    </h2>
-                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Khadim POS helps you manage inventory by allowing you to track stock levels in real-time, set alerts for low stock, and easily manage product information. It also supports barcode scanning and printing, making inventory management efficient and accurate.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 3 -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqHeading3">
-                        <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
-                            Can Khadim POS be customized to my business needs?
-                        </button>
-                    </h2>
-                    <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Yes, Khadim POS is highly customizable. You can tailor the interface, create custom reports, and set specific user roles and permissions to suit your business operations.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 4 -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqHeading4">
-                        <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
-                            What support options are available for Khadim POS users?
-                        </button>
-                    </h2>
-                    <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faqHeading4" data-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            We offer various support options including online documentation, video tutorials, and dedicated customer support. Additionally, we provide regular updates to improve functionality and add new features to the POS system.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 5 -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqHeading5">
-                        <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#faqCollapse5" aria-expanded="false" aria-controls="faqCollapse5">
-                            How secure is Khadim POS?
-                        </button>
-                    </h2>
-                    <div id="faqCollapse5" class="accordion-collapse collapse" aria-labelledby="faqHeading5" data-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Khadim POS is designed with security in mind. It includes features such as encrypted data storage, secure user access controls, and regular security updates to keep your business data safe and protected.
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+          <!-- FAQ Item 1 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeading1">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-toggle="collapse"
+                data-target="#faqCollapse1"
+                aria-expanded="false"
+                aria-controls="faqCollapse1"
+              >
+                What is Khadim POS?
+              </button>
+            </h2>
+            <div
+              id="faqCollapse1"
+              class="accordion-collapse collapse"
+              aria-labelledby="faqHeading1"
+              data-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                Khadim POS is a robust Point of Sale system designed for
+                businesses like retail stores, restaurants, and mobile shops. It
+                offers tools for inventory management, sales tracking, and
+                customer relationship management, all within an easy-to-use
+                interface.
+              </div>
             </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeading2">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-toggle="collapse"
+                data-target="#faqCollapse2"
+                aria-expanded="false"
+                aria-controls="faqCollapse2"
+              >
+                How does Khadim POS help manage inventory?
+              </button>
+            </h2>
+            <div
+              id="faqCollapse2"
+              class="accordion-collapse collapse"
+              aria-labelledby="faqHeading2"
+              data-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                Khadim POS helps you manage inventory by allowing you to track
+                stock levels in real-time, set alerts for low stock, and easily
+                manage product information. It also supports barcode scanning
+                and printing, making inventory management efficient and
+                accurate.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeading3">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-toggle="collapse"
+                data-target="#faqCollapse3"
+                aria-expanded="false"
+                aria-controls="faqCollapse3"
+              >
+                Can Khadim POS be customized to my business needs?
+              </button>
+            </h2>
+            <div
+              id="faqCollapse3"
+              class="accordion-collapse collapse"
+              aria-labelledby="faqHeading3"
+              data-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                Yes, Khadim POS is highly customizable. You can tailor the
+                interface, create custom reports, and set specific user roles
+                and permissions to suit your business operations.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeading4">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-toggle="collapse"
+                data-target="#faqCollapse4"
+                aria-expanded="false"
+                aria-controls="faqCollapse4"
+              >
+                What support options are available for Khadim POS users?
+              </button>
+            </h2>
+            <div
+              id="faqCollapse4"
+              class="accordion-collapse collapse"
+              aria-labelledby="faqHeading4"
+              data-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                We offer various support options including online documentation,
+                video tutorials, and dedicated customer support. Additionally,
+                we provide regular updates to improve functionality and add new
+                features to the POS system.
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeading5">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-toggle="collapse"
+                data-target="#faqCollapse5"
+                aria-expanded="false"
+                aria-controls="faqCollapse5"
+              >
+                How secure is Khadim POS?
+              </button>
+            </h2>
+            <div
+              id="faqCollapse5"
+              class="accordion-collapse collapse"
+              aria-labelledby="faqHeading5"
+              data-parent="#faqAccordion"
+            >
+              <div class="accordion-body">
+                Khadim POS is designed with security in mind. It includes
+                features such as encrypted data storage, secure user access
+                controls, and regular security updates to keep your business
+                data safe and protected.
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
     <style>
-        /* Your custom styles */
-        #faq {
-            background-color: #f8f9fa;
-        }
-        #faq h2 {
-            color: #333;
-        }
-        .accordion-button {
-            background-color: #2a9d8f;
-            color: white;
-        }
-        .accordion-button:not(.collapsed) {
-            background-color: #42b883;
-            color: white;
-        }
+      /* Your custom styles */
+      #faq {
+        background-color: #f8f9fa;
+      }
+      #faq h2 {
+        color: #333;
+      }
+      .accordion-button {
+        background-color: #2a9d8f;
+        color: white;
+      }
+      .accordion-button:not(.collapsed) {
+        background-color: #42b883;
+        color: white;
+      }
     </style>
     <section id="contact" class="py-5">
       <div class="container">
@@ -1203,73 +1470,84 @@
       </div>
     </section>
     <section class="contact-section">
-        <div class="container text-center">
-          <div class="contact-icons">
-            <a href="skype:live:.cid.c3db7ddd934c339e" class="contact-link" title="Skype">
-              <i class="fab fa-skype skype-icon"></i> Skype
-            </a>
-            <a href="https://wa.me/+923228430133r" class="contact-link" title="WhatsApp">
-              <i class="fab fa-whatsapp whatsapp-icon"></i> WhatsApp
-            </a>
-            <a href="mailto:mubashirhussaikhadim@gmail.com" class="contact-link" title="Email">
-              <i class="fas fa-envelope email-icon"></i> Email
-            </a>
-          </div>
+      <div class="container text-center">
+        <div class="contact-icons">
+          <a
+            href="skype:live:.cid.c3db7ddd934c339e"
+            class="contact-link"
+            title="Skype"
+          >
+            <i class="fab fa-skype skype-icon"></i> Skype
+          </a>
+          <a
+            href="https://wa.me/+923228430133r"
+            class="contact-link"
+            title="WhatsApp"
+          >
+            <i class="fab fa-whatsapp whatsapp-icon"></i> WhatsApp
+          </a>
+          <a
+            href="mailto:mubashirhussaikhadim@gmail.com"
+            class="contact-link"
+            title="Email"
+          >
+            <i class="fas fa-envelope email-icon"></i> Email
+          </a>
         </div>
-      </section>
-      
-      <style>
-        /* Apply the green color to the icons */
-.green-icon {
-  color: green; /* Adjust the shade of green if needed */
-}
-.contact-icons .skype-icon {
-  color: #00aff0; /* Skype color */
-}
+      </div>
+    </section>
 
-.contact-icons .whatsapp-icon {
-  color: #25d366; /* WhatsApp color */
-}
+    <style>
+      /* Apply the green color to the icons */
+      .green-icon {
+        color: green; /* Adjust the shade of green if needed */
+      }
+      .contact-icons .skype-icon {
+        color: #00aff0; /* Skype color */
+      }
 
-.contact-icons .email-icon {
-  color: #333; /* Email color (you can choose any color you prefer) */
-}
+      .contact-icons .whatsapp-icon {
+        color: #25d366; /* WhatsApp color */
+      }
 
-/* Style for the main navigation links */
+      .contact-icons .email-icon {
+        color: #333; /* Email color (you can choose any color you prefer) */
+      }
 
+      /* Style for the main navigation links */
 
-/* Style for the contact section */
-.contact-section {
-  background-color: #f8f9fa; /* Light background color for the contact section */
-  padding: 2rem 0; /* Add padding to the contact section */
-}
+      /* Style for the contact section */
+      .contact-section {
+        background-color: #f8f9fa; /* Light background color for the contact section */
+        padding: 2rem 0; /* Add padding to the contact section */
+      }
 
-.contact-section h2 {
-  margin-bottom: 1rem; /* Space below the heading */
-}
+      .contact-section h2 {
+        margin-bottom: 1rem; /* Space below the heading */
+      }
 
-.contact-icons {
-  display: flex;
-  justify-content: center; /* Center the icons horizontally */
-  gap: 1rem; /* Space between the icons */
-}
+      .contact-icons {
+        display: flex;
+        justify-content: center; /* Center the icons horizontally */
+        gap: 1rem; /* Space between the icons */
+      }
 
-.contact-link {
-  color: green; /* Text color matching the icon color */
-  font-size: 1.25rem; /* Adjust font size as needed */
-  text-decoration: none; /* Remove underline from links */
-}
+      .contact-link {
+        color: green; /* Text color matching the icon color */
+        font-size: 1.25rem; /* Adjust font size as needed */
+        text-decoration: none; /* Remove underline from links */
+      }
 
-.contact-link:hover {
-  color: #37dc1d; /* Hover color for contact links */
-}
+      .contact-link:hover {
+        color: #37dc1d; /* Hover color for contact links */
+      }
 
-/* Optional: Adjust icon sizes if needed */
-.fab, .fas {
-  font-size: 1.5rem; /* Adjust icon size */
-}
-
-      </style>
+      /* Optional: Adjust icon sizes if needed */
+      .fab,
+      .fas {
+        font-size: 1.5rem; /* Adjust icon size */
+      }
+    </style>
     <footer class="text-center">
       <div class="container">
         <p>&copy; 2024 Khadim POS. All rights reserved.</p>
