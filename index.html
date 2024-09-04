@@ -6,6 +6,8 @@
     <title>Khadim POS - Proposal</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/Flip.min.js"></script>
    <style>
 /* Green Color Palettes */
 .primary-green { 
@@ -440,13 +442,95 @@ footer a:hover {
         </div>
     </nav>
 
-    <header class="hero text-center">
-        <div class="container">
-            <h1>Khadim POS</h1>
-            <p>Transform your business operations with our advanced Point of Sale system tailored for mobile shops, restaurants, and retail environments.</p>
-            <a href="#contact" class="btn btn-light btn-lg rounded-pill">Request a Demo</a>
+
+    <section style="display: flex; justify-content: center; align-items: center; height: 100vh; width: 100%; background: #282c34; overflow: hidden;">
+        <div style="display: flex; flex-direction: row; width: 100%; max-width: 1200px; justify-content: space-between; align-items: center; text-align: center; background: #282c34;">
+            <!-- Animation Container -->
+            <div class="animation-container" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; width: 50%; text-align: center;">
+                <div style="color: white; font-size: 6vw; font-weight: 400; display: flex; align-items: center; justify-content: center; padding: 4px 10px; background: #42b883; margin: 5px; border-radius: 5px;" class="animated-letter">P</div>
+                <div style="color: white; font-size: 6vw; font-weight: 400; display: flex; align-items: center; justify-content: center; padding: 4px 10px; background: #2a9d8f; margin: 5px; border-radius: 5px;" class="animated-letter">O</div>
+                <div style="color: white; font-size: 6vw; font-weight: 400; display: flex; align-items: center; justify-content: center; padding: 4px 10px; background: #42b883; margin: 5px; border-radius: 5px;" class="animated-letter">S</div>
+            </div>
+    
+            <!-- Content Container -->
+            <div style="width: 50%; padding: 20px; color: white; text-align: left;">
+                <h1 style="font-size: 1.5rem; margin-bottom: 10px;">Khadim POS</h1>
+                <p style="font-size: 1rem; margin-bottom: 20px;">
+                    Transform your business operations with our advanced Point of Sale system tailored for mobile shops, restaurants, and retail environments.
+                </p>
+                <a href="#contact" style="display: inline-block; padding: 8px 16px; font-size: 1rem; color: #282c34; background: #2a9d8f; text-decoration: none; border-radius: 20px; font-weight: 600;">Request a Demo</a>
+            </div>
         </div>
-    </header>
+    
+        <!-- Internal Style for Animation Layouts -->
+        <style>
+            .animation-container {
+                max-width: 500px;
+                width: 100%;
+            }
+            .animation-final, .animation-plain, .animation-columns, .animation-grid {
+                transition: all 0.7s ease;
+            }
+            .animation-final {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                gap: 5px;
+            }
+            .animation-plain {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            .animation-columns {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+            .animation-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 5px;
+            }
+        </style>
+    
+        <!-- Animation Script -->
+        <script>
+            gsap.registerPlugin(Flip);
+    
+            let layouts = ["animation-final", "animation-plain", "animation-columns", "animation-grid"],
+                container = document.querySelector(".animation-container"),
+                curLayout = 0; // index of the current layout
+    
+            function nextState() {
+                const state = Flip.getState(".animated-letter, .text-for, .text-gsap", { props: "color,backgroundColor", simple: true }); // capture current state
+    
+                container.classList.remove(layouts[curLayout]); // remove old class
+                curLayout = (curLayout + 1) % layouts.length;   // increment (loop back to the start if at the end)
+                container.classList.add(layouts[curLayout]);    // add the new class
+    
+                Flip.from(state, { // animate from the previous state
+                    absolute: true,
+                    stagger: 0.07,
+                    duration: 0.7,
+                    ease: "power2.inOut",
+                    spin: curLayout === 0, // only spin when going to the "animation-final" layout
+                    simple: true,
+                    onEnter: (elements, animation) => gsap.fromTo(elements, {opacity: 0}, {opacity: 1, delay: animation.duration() - 0.1}),
+                    onLeave: elements => gsap.to(elements, {opacity: 0})
+                });
+    
+                gsap.delayedCall(curLayout === 0 ? 3.5 : 1.5, nextState);
+            }
+    
+            gsap.delayedCall(1, nextState);
+        </script>
+    </section>
+    
+    
+    
+    
     <section class="video-section">
         <h2>Watch Our Latest Video</h2>
         <div class="video-container">
@@ -700,7 +784,7 @@ footer a:hover {
             </div>
         </div>
     </section>
-    
+  
 
     <section id="contact" class="py-5">
         <div class="container">
