@@ -1283,93 +1283,103 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        const categories = {
-          General: ["add_catagory.png", "catagories.png", "bg.png"],
-          "User Management": ["CreateUser.png", "AllUsers.png", "addrole.png"],
-          "Product Management": [
-            "createproduct.png",
-            "alllproduct.png",
-            "CreatePurchase.png",
-            "AllPurchases.png",
-            "purchaseReturn.png",
-            "AllpurchaseReturns.png",
-          ],
-          "Sales Management": [
-            "createSaleReturn.png",
-            "Allsales.png",
-            "AllsalesReturn.png",
-            "sale.png",
-          ],
-          "Expenses and Reports": [
-            "CreateExpense.png",
-            "AllExpenses.png",
-            "ProfitAndLossReports.png",
-            "PaymentReport.png",
-          ],
-          Suppliers: ["AllSuplaiers.png", "bardcode.png", "printbarcode.png"],
-          Settings: [
-            "CurrencySetting.png",
-            "sysTemSettting.png",
-            "unitsetting.png",
-            "stockAdgusment.png",
-            "alllAdjustment.png",
-            "RoleAndPermissiom.png",
-            "AllQoutation.png",
-          ],
-        };
+   <script>
+  $(document).ready(function () {
+    const categories = {
+      General: ["add_catagory.png", "catagories.png", "bg.png"],
+      "User Management": ["CreateUser.png", "AllUsers.png", "addrole.png"],
+      "Product Management": [
+        "createproduct.png",
+        "alllproduct.png",
+        "CreatePurchase.png",
+        "AllPurchases.png",
+        "purchaseReturn.png",
+        "AllpurchaseReturns.png",
+      ],
+      "Sales Management": [
+        "createSaleReturn.png",
+        "Allsales.png",
+        "AllsalesReturn.png",
+        "sale.png",
+      ],
+      "Expenses and Reports": [
+        "CreateExpense.png",
+        "AllExpenses.png",
+        "ProfitAndLossReports.png",
+        "PaymentReport.png",
+      ],
+      Suppliers: ["AllSuplaiers.png", "bardcode.png", "printbarcode.png"],
+      Settings: [
+        "CurrencySetting.png",
+        "sysTemSettting.png",
+        "unitsetting.png",
+        "stockAdgusment.png",
+        "alllAdjustment.png",
+        "RoleAndPermissiom.png",
+        "AllQoutation.png",
+      ],
+    };
 
-        function renderCategoryButtons() {
-          let buttonsHtml = "";
-          $.each(categories, function (category) {
-            buttonsHtml += `<button type="button" class="btn btn-outline-success" data-category="${category}">${category}</button>`;
-          });
-          buttonsHtml += `<button type="button" class="btn btn-outline-success" data-category="All">All</button>`;
-          $("#categoryButtons").html(buttonsHtml);
-        }
-
-        function loadImages(category) {
-          let images =
-            category === "All"
-              ? Object.values(categories).flat()
-              : categories[category] || [];
-          let imageHtml = images
-            .map(
-              (img) =>
-                `<img src="images/${img}" alt="${img}" data-src="images/${img}" class="img-thumbnail">`
-            )
-            .join("");
-          $("#imageGallery").html(imageHtml);
-          $("#imageGallery").collapse("show"); // Show images
-        }
-
-        function openLightbox(src) {
-          $("#lightbox").show();
-          $("#lightbox-img").attr("src", src);
-        }
-
-        function closeLightbox() {
-          $("#lightbox").hide();
-        }
-
-        $("#categoryButtons").on("click", "button", function () {
-          const category = $(this).data("category");
-          $("#categoryButtons button").removeClass("btn-active");
-          $(this).addClass("btn-active");
-          loadImages(category);
-        });
-
-        $("#imageGallery").on("click", "img", function () {
-          openLightbox($(this).data("src"));
-        });
-
-        $(".close").on("click", closeLightbox);
-
-        renderCategoryButtons();
-        loadImages("General"); // Default category
+    function renderCategoryButtons() {
+      let buttonsHtml = "";
+      $.each(categories, function (category) {
+        buttonsHtml += `<button type="button" class="btn btn-outline-success" data-category="${category}">${category}</button>`;
       });
-    </script>
+      buttonsHtml += `<button type="button" class="btn btn-outline-success" data-category="All">All</button>`;
+      $("#categoryButtons").html(buttonsHtml);
+    }
+
+    function loadImages(category) {
+      let images =
+        category === "All"
+          ? Object.values(categories).flat()
+          : categories[category] || [];
+      let imageHtml = images
+        .map(
+          (img) =>
+            `<img src="images/${img}" alt="${img}" data-src="images/${img}" class="img-thumbnail">`
+        )
+        .join("");
+      $("#imageGallery").html(imageHtml).collapse("show"); // Show images
+    }
+
+    function openLightbox(src) {
+      $("#lightbox").fadeIn(); // Use fadeIn for smoother appearance
+      $("#lightbox-img").attr("src", src);
+    }
+
+    function closeLightbox() {
+      $("#lightbox").fadeOut(); // Use fadeOut for smoother disappearance
+    }
+
+    // Handle category button clicks
+    $("#categoryButtons").on("click", "button", function () {
+      const category = $(this).data("category");
+      $("#categoryButtons button").removeClass("btn-active");
+      $(this).addClass("btn-active");
+      loadImages(category);
+    });
+
+    // Handle image clicks to open the lightbox
+    $("#imageGallery").on("click", "img", function () {
+      openLightbox($(this).data("src"));
+    });
+
+    // Handle close button click
+    $("#lightbox").on("click", ".close", closeLightbox);
+
+    // Handle clicking outside the lightbox image to close
+    $("#lightbox").on("click", function (event) {
+      if ($(event.target).is("#lightbox")) {
+        closeLightbox();
+      }
+    });
+
+    renderCategoryButtons();
+    loadImages("General"); // Default category
+  });
+</script>
+
 
     <script>
       // Initialize EmailJS with your user ID
