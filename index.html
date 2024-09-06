@@ -471,6 +471,54 @@
         color: #666; /* Text color */
         line-height: 1.5; /* Line height for readability */
       }
+      .content {
+    padding: 20px;
+}
+
+/* Social media sidebar styling */
+.social-sidebar {
+    position: fixed;
+    right: 20px; /* Adjust this value to set the distance from the right edge */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Optional: add left margin if you want additional space from the left edge */
+    margin-left: 20px;
+}
+
+.social-icon {
+    display: block;
+    margin: 10px 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Colors for social media platforms */
+.skype {
+    background-color: #00aff0; /* Skype color */
+}
+
+.whatsapp {
+    background-color: #25d366; /* WhatsApp color */
+}
+
+.email {
+    background-color: #d14836; /* Email color */
+}
     </style>
   </head>
   <body>
@@ -765,7 +813,17 @@
       </div>
     </section>
     <h2 class="text-center">Khadim POS Interactive Flowchart</h2>
-
+    <div class="social-sidebar">
+      <a href="skype:live:.cid.c3db7ddd934c339e" class="social-icon skype" title="Call us on Skype">
+          <i class="fab fa-skype"></i>
+      </a>
+      <a href="https://wa.me/03228430133" class="social-icon whatsapp" title="Chat with us on WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="mailto:mubashirhussainkhadim@gmail.com" class="social-icon email" title="Email us">
+          <i class="fas fa-envelope"></i>
+      </a>
+  </div>
     <section class="erdiagram">
       <div class="chart-container">
           <div id="myDiagramDiv"></div>
@@ -800,7 +858,6 @@
               const model = $(go.GraphLinksModel, {
                   linkKeyProperty: "key",
                   nodeDataArray: [
-                      { key: "a", name: "Login", color: "lightblue" },
                       { key: "A", name: "Home", color: "lightblue" },
                       { key: "B", name: "Products", color: "lightblue" },
                       { key: "C", name: "Categories", color: "lightblue" },
@@ -849,7 +906,6 @@
                       { key: "AT", name: "System Settings", color: "lightblue" }
                   ],
                   linkDataArray: [
-                      { key: "a-A", from: "a", to: "A" },
                       { key: "A-B", from: "A", to: "B" },
                       { key: "B-C", from: "B", to: "C" },
                       { key: "B-D", from: "B", to: "D" },
